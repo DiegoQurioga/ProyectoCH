@@ -7,8 +7,6 @@ import { deleteUser } from '../features/userSlice';
 import { useDispatch } from 'react-redux';
 import { deleteSesion } from '../config/dbSqlite';
 
-
-
 const Header = ({title}) => {
 
   const navigate = useNavigation()

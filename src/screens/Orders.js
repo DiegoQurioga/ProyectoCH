@@ -14,7 +14,7 @@ const Orders = () => {
   if(!orders) return <EmptyListComponent message="No hay ordenes"/>
   
   return (
-    <View>
+    <View style={styles.container}>
       <FlatList
         data={orders}
         keyExtractor={item => item.id}
@@ -26,4 +26,9 @@ const Orders = () => {
 
 export default Orders
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  container:{
+    backgroundColor:"black",
+    height:"100%"
+  }
+})

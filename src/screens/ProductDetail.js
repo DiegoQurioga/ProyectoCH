@@ -1,56 +1,68 @@
-import { StyleSheet, Text, View,Image, Pressable } from 'react-native'
+import { StyleSheet, Text, View, Image, Pressable } from 'react-native'
 import { colors } from '../globals/colors'
 import { useGetProductCartQuery, usePostCartMutation } from '../services/cart'
 import { useSelector } from 'react-redux'
 import { useNavigation } from '@react-navigation/native'
 import Counter from '../components/Counter'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
-const ProductDetail = ({route}) => {
-
-  const [quantity,setQuantity] = useState(1)
+const ProductDetail = ({ route }) => {
+  const [quantity, setQuantity] = useState(1)
   const navigation = useNavigation()
-  const {product} = route.params
+  const { product } = route.params
   const localId = useSelector(state => state.user.localId)
   const [triggerAddProduct] = usePostCartMutation()
-  const {data:productCart} = useGetProductCartQuery({localId,productId:product.id})
-  
+
+  const { data: productCart, isLoading } = useGetProductCartQuery({ localId, productId: product.id })
+
+  useEffect(() => {
+    if (isLoading) return
+  }, [isLoading])
+
   const increment = () => {
     const cartQuantity = productCart ? productCart.quantity : 0
-    if(quantity >= (product.stock - cartQuantity )) return
+    if (quantity >= (product.stock - cartQuantity)) return
     setQuantity(quantity + 1)
   }
 
   const decrement = () => {
-    if(quantity === 1) return
+    if (quantity === 1) return
     setQuantity(quantity - 1)
   }
 
-  const  handleAddproduct = async () => {
-
+  const handleAddproduct = async () => {
     const cartQuantity = productCart ? productCart.quantity : 0
-    if((product.stock - cartQuantity) === 0 ) return
+    if ((product.stock - cartQuantity) === 0) return
     const newQuantity = quantity + cartQuantity
     const cartProduct = {
       ...product,
-      quantity:newQuantity
+      quantity: newQuantity
     }
-    const result = await triggerAddProduct({localId,cartProduct})
+
+    const result = await triggerAddProduct({ localId, cartProduct })
     setQuantity(1)
     navigation.navigate("CartStack")
   }
 
+  if (isLoading || !product) {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.textButton}>Cargando...</Text>
+      </View>
+    )
+  }
+
   return (
     <View style={styles.container}>
-      <Image source={{uri:product.thumbnail}} style={styles.image} resizeMode='contain'/>
+      <Image source={{ uri: product.thumbnail }} style={styles.image} resizeMode='contain' />
       <Text style={styles.title}>{product.title}</Text>
       <Text style={styles.description}>{product.description}</Text>
-      <Text style={styles.price}>Precio: {product.price} $ ARG</Text>
+      <Text style={styles.price}>Precio: {product.price} $ USD</Text>
       {
-        (product.stock - productCart?.quantity) === 0 ? 
-          <Text style={styles.price}>Producto sin stock</Text> 
-          : 
-          <Counter quantity={quantity} increment={increment} decrement={decrement}/>
+        (product.stock - (productCart?.quantity || 0)) === 0 ?
+          <Text style={styles.price}>Producto sin stock</Text>
+          :
+          <Counter quantity={quantity} increment={increment} decrement={decrement} />
       }
       <Pressable style={styles.button} onPress={handleAddproduct}>
         <Text style={styles.textButton}>Agregar al carrito</Text>
@@ -62,41 +74,45 @@ const ProductDetail = ({route}) => {
 export default ProductDetail
 
 const styles = StyleSheet.create({
-  container:{
-    gap:10
+  container: {
+    gap: 10,
+    backgroundColor: "black",
+    height: "100%"
   },
-  image:{
-    width:"100%",
-    height:200,
-    backgroundColor:"red"
+  image: {
+    width: "100%",
+    height: 200,
+    backgroundColor: colors.background
   },
-  title:{
-    fontSize:16,
-    fontWeight:"bold",
-    textAlign:"center",
-    paddingVertical:20
+  title: {
+    fontSize: 16,
+    fontWeight: "bold",
+    textAlign: "center",
+    paddingVertical: 20,
+    color: "white"
   },
-  description:{
-    fontSize:14,
-    padding:20,
-    textAlign:"center"
+  description: {
+    fontSize: 14,
+    padding: 20,
+    textAlign: "center",
+    color: "white"
   },
-  price:{
-    fontSize:20,
-    fontWeight:"bold",
-    paddingHorizontal:50,
-    paddingVertical:20,
-    textAlign:"right"
+  price: {
+    fontSize: 20,
+    fontWeight: "bold",
+    paddingHorizontal: 50,
+    paddingVertical: 20,
+    textAlign: "right",
+    color: "white"
   },
-  button:{
-    backgroundColor:colors.accent,
-    marginHorizontal:10,
-    padding:10,
-    alignItems:"center",
-    borderRadius:6
+  button: {
+    backgroundColor: colors.accent,
+    marginHorizontal: 10,
+    padding: 10,
+    alignItems: "center"
   },
-  textButton:{
-    fontSize:20,
-    color:colors.lightGray
+  textButton: {
+    fontSize: 20,
+    color: colors.lightGray
   }
 })

@@ -63,11 +63,13 @@ export default ImageSelector
 
 const styles = StyleSheet.create({
     container:{
-        marginTop:70,
         alignItems:"center",
-        gap:20
+        gap:20,
+        backgroundColor:"black",
+        height:"100%"
     },
     containerImage:{
+        marginTop:70,
         width:150,
         height:150,
         borderRadius:"50%",

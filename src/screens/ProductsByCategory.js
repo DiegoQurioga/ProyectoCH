@@ -4,6 +4,7 @@ import Search from '../components/Search'
 import CardProduct from '../components/CardProduct'
 import { useGetProductsQuery } from '../services/shop'
 import LoadingSpinner from '../components/LoadingSpinner'
+import { colors } from '../globals/colors.js'
 
 
 
@@ -41,7 +42,7 @@ const ProductsByCategory = ({route}) => {
 
 
   return (
-    <View>
+    <View style={styles.container}>
       <Search  onChangeKeyword ={(t)=> setKeyword(t)}/>
       <FlatList
         data={products}
@@ -55,5 +56,8 @@ const ProductsByCategory = ({route}) => {
 export default ProductsByCategory
 
 const styles = StyleSheet.create({
-
+container:{
+  backgroundColor:colors.background,
+  height:"100%"
+}
 })

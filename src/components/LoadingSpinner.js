@@ -1,5 +1,4 @@
 import { StyleSheet, ActivityIndicator, View } from 'react-native'
-import { colors } from '../globals/colors'
 
 const LoadingSpinner = () => {
   return (
@@ -18,7 +17,7 @@ const styles = StyleSheet.create({
         flex:1,
         justifyContent:"center",
         alignItems:"center",
-        backgroundColor:colors.accent,
+        backgroundColor:"black",
         position:"absolute",
         zIndex:1000,
     }

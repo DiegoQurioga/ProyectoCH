@@ -33,7 +33,6 @@ const styles = StyleSheet.create({
     backgroundColor:colors.accent,
     width:50,
     padding:10,
-    borderRadius:5,
     justifyContent:"center",
     alignItems:"center"
   },

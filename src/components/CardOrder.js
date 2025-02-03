@@ -8,7 +8,7 @@ const CardOrder = ({order}) => {
     <View style={styles.container}>
       <View style={styles.content}>
         <Text style={styles.text}>{order.createdAt}</Text>
-        <Text style={styles.text}>Total: {order.total} $ ARG</Text>
+        <Text style={styles.text}>Total: {order.total} $ USD</Text>
       </View>
       <AntDesign name="search1" size={30} color={colors.lightGray} />
     </View>
@@ -24,8 +24,7 @@ const styles = StyleSheet.create({
         margin:10,
         padding:20,
         justifyContent:"space-between",
-        alignItems:"center",
-        borderRadius:5
+        alignItems:"center"
     },
     content:{
         gap:10

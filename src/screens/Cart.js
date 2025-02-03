@@ -46,7 +46,7 @@ const Cart = () => {
         renderItem={({item}) => <CardCartProduct product = {item}/>}
       />
       <View style={styles.containerTotal}>
-        <Text style={styles.text}>Total: {total} $ ARG </Text>
+        <Text style={styles.text}>Total: {total} $ USD </Text>
         <Pressable style={styles.button} onPress={confirmCart}>
             <Text style={styles.buttonText}>Finalizar Compra</Text>
         </Pressable>
@@ -60,7 +60,8 @@ export default Cart
 const styles = StyleSheet.create({
     container:{
         flex:1,
-        position:"relative"
+        position:"relative",
+        backgroundColor:colors.background
     },
     containerTotal:{
         width:"100%",
@@ -79,7 +80,6 @@ const styles = StyleSheet.create({
     button:{
         backgroundColor:colors.primary,
         padding:10,
-        borderRadius:5
     },
     buttonText:{
         color:colors.lightGray

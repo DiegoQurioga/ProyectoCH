@@ -1,102 +1,43 @@
-# E-Commerce App - React Native
+# App E-Commerce con React Native
+Es una app de mercado digital con una experiencia de usuario llamativa y de facil uso.
 
-Una aplicación de comercio electrónico desarrollada con React Native que ofrece una experiencia de compra completa y fácil de usar.
+## Flujo de la aplicacion
+Al abrir la aplicacion, veremos una pantalla de login, donde tendremos que ingresar nuestros datos de cuenta para asi poder acceder a la app.
+Una vez dentro veremos una pantalla de categorias, donde se muestran generos de videojuegos. Al acceder a uno, veremos los juegos disponibles para esa categoria,
+si escogemos uno, se muestra una foto del mismo, el nombre, una breve descripción, el stock con el que se dispone y el precio.
+Luego de comprar el producto, pasamos a la pantalla del carrito, donde podemos ver los productos que vamos acumulando en nuestro pedido.
+Al finalizar, procedemos con la compra y nos desplazamos a la pantalla de ordenes, donde veremos el numero de orden y la cantidad en dolares del pedido.
 
-## Funcionalidades Principales
+También contamos con una pantalla de Perfil, donde vemos una foto de perfil y dos opciones de cambiar la foto de perfil y cambiar nuestra ubicación.
 
-### Pantalla de Cuenta
-
-- **Acceso seguro:** Solo los usuarios autenticados pueden acceder a la pantalla de perfil y realizar compras.
-- **Información del usuario:** Muestra detalles del usuario, como nombre y dirección.
-
-<img src="./screenshot/Screenshot_1737498571.png" width="300" >
-<img src="./screenshot/Screenshot_1737498674.png" width="300" >
-
-### Autenticación con Firebase
-
-- Utiliza el sistema de autenticación de Firebase para gestionar el acceso de usuarios.
-- Permite a los usuarios iniciar sesión y registrarse de manera segura.
-
-### Pantalla de Categorías
-
+# Categorías
 - Muestra una selección de categorías en tarjetas.
 - Al hacer clic en una categoría, se navega a la pantalla de productos correspondiente.
 
-### Pantalla de Productos
-
+### Productos
 - Lista todos los productos en tarjetas con nombre y foto.
 - Incluye un buscador para filtrar productos por nombre.
 - Al hacer clic en un producto, se navega a la pantalla de detalles del producto.
 
-### Pantalla de Detalles del Producto
-
+### Detalles del producto
 - Proporciona una descripción detallada del producto.
 - Muestra el precio y el stock disponible.
 - Permite agregar el producto al carrito.
 
-<img src="./screenshot/Screenshot_1705910438.png" width="300" >
-<img src="./screenshot/Screenshot_1705910442.png" width="300" >
-<img src="./screenshot/Screenshot_1705910445.png" width="300" >
-
-### Navegación Inferior
-
-
-```javascript
-        const TabNavigator = () => {
-  return (
-        <Tab.Navigator
-          screenOptions={{
-            headerShown:false,
-            tabBarShowLabel:false,
-            tabBarStyle: styles.tabBar
-
-          }}
-        >
-          <Tab.Screen
-             name="ShopStack"
-             component={ShopStack}
-             options={{
-              tabBarIcon:({focused}) => <TabIcon icon="shop" label="Productos" focused={focused}/>
-             }}
-          />
-          <Tab.Screen 
-              name="CartStack" 
-              component={CartStack}
-              options={{
-                tabBarIcon:({focused}) =>  <TabIcon icon="shopping-cart" label="Carrito" focused={focused}/> 
-              }}
-             />
-             <Tab.Screen 
-              name="OrdersStack" 
-              component={OrdersStack}
-              options={{
-                tabBarIcon:({focused}) => <TabIcon icon="list" label="Ordenes" focused={focused}/> 
-              }}
-             />
-            <Tab.Screen 
-              name="ProfileStack" 
-              component={ProfileStack}
-              options={{
-                tabBarIcon:({focused}) => <TabIcon icon="user" label="Perfil" focused={focused}/> 
-              }}
-             />
-      </Tab.Navigator>
-  )
-}
-
-```
-
-- **Pestaña 1 - Productos:** Categorías y productos (stack principal).
+- **Pestaña 1 - Productos:** Categorías y productos.
 - **Pestaña 2 - Carrito:** Detalles del carrito de compras con resumen y botón para finalizar la orden.
 - **Pestaña 3 - Órdenes:** Historial de órdenes realizadas.
 - **Pestaña 4 - Perfil:** Información del usuario, ubicación y carga de imagen de perfil.
 
-<img src="./screenshot/Screenshot_1705910459.png" width="300" >
-<img src="./screenshot/Screenshot_1705910463.png" width="300" >
+# Autenticación de usuarios con Firebase
+- Utiliza el sistema de autenticación de Firebase para gestionar el acceso de usuarios.
+- Permite a los usuarios iniciar sesión y registrarse de manera segura.
+
+# Función de Cerrar sesión
+- Se implementa un boton de logout para poder cerrar sesión.
 
 ## Tecnologías Utilizadas
-
-- **Firebase Authentication:** Implementa el sistema de autenticación de Firebase para gestionar la seguridad de la aplicación.
+- **Firebase Authentication:** Implementa el sistema de autenticación de Firebase para gestionar la seguridad de la app.
 - **React Native Navigation Stack:** Gestiona la navegación entre pantallas.
 - **React Native Navigation Buttom tap:** Gestiona la navegación entre pestañas.
 - **Expo-Location:** Permite acceder y gestionar la ubicación del usuario.
@@ -105,13 +46,8 @@ Una aplicación de comercio electrónico desarrollada con React Native que ofrec
 - **RTK Query y Firebase:** Realiza operaciones de lectura/escritura en la base de datos.
 
 ## Instalación
-
-1. Clona el repositorio: `git clone https://github.com/tu-usuario/tu-aplicacion.git`
-2. Instala las dependencias: `npm install`
+1. Clonar el repositorio usando: `git clone https://github.com/DiegoQurioga/ProyectoCH`
+2. Instalar las dependencias: `npm install`
 3. Configura las claves de API para servicios externos (Expo-Location, Firebase, etc.).
 4. Configura las credenciales de Firebase en tu proyecto.
 5. Ejecuta la aplicación: `npm start`
-
-## Contacto
-
-Para preguntas o soporte, contacta a maxi_rosanda@hotmail.com.

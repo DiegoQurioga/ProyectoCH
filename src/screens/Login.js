@@ -10,9 +10,7 @@ import { setUser } from '../features/userSlice'
 import { loginSchema } from '../validations/loginSchema'
 import { deleteSesion, insertSession } from '../config/dbSqlite'
 
-
 const Login = () => {
-
   const [email,setEmail] = useState("")
   const [password,setPassword] = useState("")
   const [emailError,setEmailError] = useState("")
@@ -21,9 +19,7 @@ const Login = () => {
   const [triggerLogin] = useLoginMutation()
   const dispatch = useDispatch()
 
-
   const onSubmit = async () => {
-
     try {
         loginSchema.validateSync({email,password})
         const response = await triggerLogin({email,password})
@@ -50,10 +46,9 @@ const Login = () => {
     }
   }
 
-
   return (
-    <View style={styles.main}>
-      <View style={styles.container}>
+    <View style={styles.container}>
+      <View style={styles.login}>
           <Text style={styles.title} >Ingresar</Text>
           <InputForm
             label="Email"
@@ -70,30 +65,28 @@ const Login = () => {
             error={passwordError}
           />
           <SubmitButton onPress={onSubmit} title="Ingresar"/>
-          <Text style={styles.sub}>No tienen una cuenta?</Text>
+          <Text style={styles.sub}>¿No tienes cuenta?</Text>
           <Pressable onPress={()=> navigation.navigate("Signup")} >
-              <Text style={styles.subLink}>Reghistrarme</Text>
+              <Text style={styles.subLink}>Registrarse</Text>
           </Pressable>
       </View>
     </View>
   )
 }
-
-
 export default Login
 
-
 const styles = StyleSheet.create({
-    main:{
+    container:{
       flex:1,
       justifyContent:"center",
-      alignItems:"center"
+      alignItems:"center",
+      backgroundColor:colors.background
     },
-    container:{
+    login:{
       width:"90%",
       backgroundColor:colors.primary,
       gap:15,
-      borderRadius:10,
+      borderRadius:0,
       justifyContent:"center",
       alignItems:"center",
       paddingVertical:20

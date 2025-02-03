@@ -24,10 +24,6 @@ const Signup = () => {
   const [triggerSignup] = useSignUpMutation()
   const dispatch = useDispatch()
 
-
-  
-  
-
   const onSubmit = async () => {
     try {
         signupSchema.validateSync({email,password,confirmPassword})
@@ -60,7 +56,6 @@ const Signup = () => {
     }
   }
 }
-
 
   return (
     <View style={styles.main}>
@@ -99,9 +94,7 @@ const Signup = () => {
   )
 }
 
-
 export default  Signup
-
 
 const styles = StyleSheet.create({
     main:{

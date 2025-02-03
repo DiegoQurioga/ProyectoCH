@@ -21,7 +21,6 @@ const styles = StyleSheet.create({
         backgroundColor:colors.accent,
         padding:10,
         alignItems:"enter",
-        borderRadius:10
     },
     text:{
         textAlign:"center",

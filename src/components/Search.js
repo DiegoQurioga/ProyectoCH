@@ -38,10 +38,10 @@ const Search = ({onChangeKeyword}) => {
           placeholderTextColor={colors.lightGray}
           placeholder='Buscar'/>
         <Pressable style={styles.button} onPress={search}>
-          <FontAwesome name="search" size={30} color="black" />
+          <FontAwesome name="search" size={30} color="white" />
         </Pressable>
         <Pressable style={styles.button} onPress={removeSearch}>
-          <MaterialIcons name="cancel" size={30} color="black" />
+          <MaterialIcons name="cancel" size={30} color="white" />
         </Pressable>
       </View>
       <Text style={styles.error}>{error ? error : ""}</Text>

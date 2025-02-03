@@ -1,13 +1,14 @@
 import { StyleSheet,FlatList,View,Text} from 'react-native'
 import CardItemCategory from './CardItemCategory'
 import { useGetCategoriesQuery} from '../services/shop'
+import LoadingSpinner from '../components/LoadingSpinner'
 
 
 const Categories = () => {
 
   const {data:categories,isError,error,isSuccess,isLoading} = useGetCategoriesQuery()
 
-  if(isLoading) return <View><Text>cargando</Text></View>
+  if(isLoading) return <LoadingSpinner/>
   if(isError) return <View><Text>{error.message}</Text></View>
   
   return (

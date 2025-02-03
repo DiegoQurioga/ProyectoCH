@@ -18,7 +18,7 @@ const CardCartProduct = ({product}) => {
         <Text style={styles.title}>{title}</Text>
         <Text style={styles.description}>{description}</Text>
         <View style={styles.containerText}>
-            <Text style={styles.text}>Precio: {price}$  ARG</Text>
+            <Text style={styles.text}>Precio: {price}$  USD</Text>
             <Text style={styles.text}>Cantidad: {quantity}</Text>
         </View>
       </View>
@@ -36,7 +36,6 @@ const styles = StyleSheet.create({
     container:{
         backgroundColor:colors.primary,
         margin:10,
-        borderRadius:5,
         padding:15,
         flexDirection:"row",
         alignItems:"center",

@@ -5,16 +5,11 @@ import { fonts } from './src/globals/fonts'
 import Navigator from './src/navigation/Navigator'
 import { Provider } from 'react-redux'
 import {store} from './src/store'
-import { useEffect } from 'react'
-//import dotenv from 'dotenv'
 
 
 export default function App() {
 
-
-  //dotenv.config()
   const [fontsLoaded] = useFonts(fonts)
-
   if(!fontsLoaded){
     return null
   }
@@ -24,7 +19,6 @@ export default function App() {
       <Provider store={store}>
         <Navigator/>
       </Provider>
-    
       <StatusBar style="light" backgroundColor={colors.accent}/>
     </>
   )

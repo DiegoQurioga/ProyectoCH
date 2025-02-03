@@ -28,10 +28,9 @@ const styles = StyleSheet.create({
         backgroundColor:colors.accent,
         marginHorizontal:15,
         marginVertical:10,
-        padding:15,
+        padding:20,
         alignItems:"center",
-        justifyContent:"center",
-        borderRadius:7
+        justifyContent:"center"
     },
     text:{
         color:colors.lightGray
